@@ -1,6 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
 export default function SignUp() {
@@ -10,6 +11,7 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const [isPending, startTransition] = useTransition();
 
+  const router = useRouter();
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     setError("");
@@ -20,7 +22,7 @@ export default function SignUp() {
         {
           onSuccess: () => {
             console.log("signed up");
-            // navigate to dashboard
+            router.push("/dashboard");
           },
           onError: (ctx) => {
             setError(ctx.error.message);

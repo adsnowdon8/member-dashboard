@@ -6,5 +6,14 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
+    autoSignIn: true,
+  },
+  baseURL: {
+    // Allows any .vercel.app subdomain for preview deployments
+    allowedHosts: [
+      "your-production-domain.com",
+      "*.vercel.app",
+      "localhost:3000",
+    ],
   },
 });
