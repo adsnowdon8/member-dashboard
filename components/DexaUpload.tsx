@@ -38,7 +38,7 @@ export default function DexaUpload({ onSuccess }: { onSuccess?: () => void }) {
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center gap-2">
       <input
         ref={inputRef}
         type="file"
@@ -62,6 +62,6 @@ export default function DexaUpload({ onSuccess }: { onSuccess?: () => void }) {
       {status === "error" && (
         <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
       )}
-    </>
+    </div>
   );
 }

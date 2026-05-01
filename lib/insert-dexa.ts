@@ -71,13 +71,12 @@ export async function insertDexaScan(
   }
 }
 
-export async function getLatestScan(userId: string): Promise<ScanSummary | null> {
+export async function getAllScans(userId: string): Promise<ScanSummary[]> {
   const { rows } = await pool.query<ScanSummary>(
     `SELECT * FROM body_composition_summary
      WHERE user_id = $1
-     ORDER BY scan_date DESC
-     LIMIT 1`,
+     ORDER BY scan_date DESC`,
     [userId]
   );
-  return rows[0] ?? null;
+  return rows;
 }
